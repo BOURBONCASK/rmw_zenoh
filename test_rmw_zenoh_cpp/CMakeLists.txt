@@ -40,6 +40,29 @@ if(BUILD_TESTING)
     rclcpp::rclcpp
     rmw_zenoh_cpp::rmw_zenoh_cpp
     ${test_msgs_TARGETS}
+    ament_cmake_ros_core::ament_ros_defaults
+  )
+
+  ament_add_ros_isolated_gtest(test_service_destroy_during_request
+    test/test_service_destroy_during_request.cpp
+    TIMEOUT 120
+    ENV RMW_IMPLEMENTATION=rmw_zenoh_cpp)
+  target_link_libraries(test_service_destroy_during_request
+    rclcpp::rclcpp
+    rmw_zenoh_cpp::rmw_zenoh_cpp
+    ${test_msgs_TARGETS}
+    ament_cmake_ros_core::ament_ros_defaults
+  )
+
+  ament_add_ros_isolated_gtest(test_subscription_destroy_during_sample
+    test/test_subscription_destroy_during_sample.cpp
+    TIMEOUT 120
+    ENV RMW_IMPLEMENTATION=rmw_zenoh_cpp)
+  target_link_libraries(test_subscription_destroy_during_sample
+    rclcpp::rclcpp
+    rmw_zenoh_cpp::rmw_zenoh_cpp
+    ${test_msgs_TARGETS}
+    ament_cmake_ros_core::ament_ros_defaults
   )
 endif()
 
